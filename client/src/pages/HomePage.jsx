@@ -79,7 +79,7 @@ const HomePage = () => {
       <div className="container-fluid row mt-3 home-page">
         
         <div className="col-md-9 ">
-          <h1 className="text-center">All Products</h1>
+          <h1 className="center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
@@ -88,7 +88,7 @@ const HomePage = () => {
                   className="card-img-top"
                   alt={p.name}
                 />
-                <div className="card-body">
+                <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                   <div className="card-name-price">
                     <h5 className="card-title">{p.name}</h5>
                     <h5 className="card-title card-price">

@@ -14,9 +14,15 @@
 }
 
 .cart-page .card {
+  display: flex;
+  align-items: center;
   padding: 5px !important;
-  height: 150px !important;
+  height: 260px !important;
   margin-bottom: 5px !important;
+}
+.cart-page .card-img-top{
+  width:100%;
+  height:200px;
 }
 .cart-page .cart-remove-btn {
   display: flex;

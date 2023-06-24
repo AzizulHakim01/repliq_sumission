@@ -43,24 +43,11 @@ const CartPage = () => {
     }
   };
 
-  //get payment gateway token
-  const getToken = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/product/braintree/token");
-      setClientToken(data?.clientToken);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getToken();
-  }, [auth?.token]);
-
   
+ 
   return (
     <Layout>
-      {auth?.user? (
-        <div className=" cart-page">
+      <div className=" cart-page">
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center bg-light p-2 mb-1">
@@ -108,9 +95,46 @@ const CartPage = () => {
               ))}
             </div>
             <div className="col-md-5 cart-summary ">
-              
+              <h2>Cart Summary</h2>
+              <p>Total | Checkout | Payment</p>
+              <hr />
               <h4>Total : {totalPrice()} </h4>
-              
+              {auth?.user?.address ? (
+                <>
+                  <div className="mb-3">
+                    <h4>Current Address</h4>
+                    <h5>{auth?.user?.address}</h5>
+                    <button
+                      className="btn btn-outline-warning"
+                      onClick={() => navigate("/dashboard/user/profile")}
+                    >
+                      Update Address
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="mb-3">
+                  {auth?.token ? (
+                    <button
+                      className="btn btn-outline-warning"
+                      onClick={() => navigate("/dashboard/user/profile")}
+                    >
+                      Update Address
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-outline-warning"
+                      onClick={() =>
+                        navigate("/login", {
+                          state: "/cart",
+                        })
+                      }
+                    >
+                      Please Login to checkout
+                    </button>
+                  )}
+                </div>
+              )}
               <div className="mt-2">
                 {!clientToken || !auth?.token || !cart?.length ? (
                   ""
@@ -125,14 +149,6 @@ const CartPage = () => {
                       }}
                       onInstance={(instance) => setInstance(instance)}
                     />
-
-                    <button
-                      className="btn btn-primary"
-                      onClick={handlePayment}
-                      disabled={loading || !instance || !auth?.user?.address}
-                    >
-                      {loading ? "Processing ...." : "Make Payment"}
-                    </button>
                   </>
                 )}
               </div>
@@ -140,7 +156,6 @@ const CartPage = () => {
           </div>
         </div>
       </div>
-      ):(<h1>Please Login to Proceed</h1>)}
     </Layout>
   );
 };
