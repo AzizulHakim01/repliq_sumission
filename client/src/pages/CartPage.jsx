@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AiFillWarning } from "react-icons/ai";
 import axios from "axios";
 import "../styles/CartStyles.css";
+import BASE_URL from "../api"
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -14,7 +15,6 @@ const CartPage = () => {
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const BASE_URL = import.meta.env.VITE_BASE_URL
 
   //total price
   const totalPrice = () => {

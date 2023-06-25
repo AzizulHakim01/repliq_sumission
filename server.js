@@ -6,6 +6,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
+// import path from "path"
 
 //configure env
 dotenv.config();
@@ -32,6 +33,17 @@ app.get("/", (req, res) => {
 
 //PORT
 const PORT = process.env.PORT || 8080;
+
+// //Calling Frontend
+// app.use(express.static(path.join(__dirname, "./client/dist"))),
+// app.get("*", function (_, res){
+//   res.sendFile(
+//     path.join(__dirname, "./client/dist/index.html"),
+//     function (err){
+//       res.status(500).send(err)
+//     }
+//   )
+// })
 
 //run listen
 app.listen(PORT, () => {

@@ -5,6 +5,7 @@ import axios from "axios";
 import { Select, message } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Option } = Select;
+import BASE_URL from "../../api"
 
 const CreateProduct = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const CreateProduct = () => {
       productData.append("quantity", quantity);
       productData.append("photo", photo);
       const { data } = axios.post(
-        "http://localhost:8080/api/v1/product/create-product",
+        `${BASE_URL}/api/v1/product/create-product`,
         productData
       );
       if (data?.success) {

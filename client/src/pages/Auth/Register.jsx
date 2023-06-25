@@ -4,12 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { message } from "antd";
+import BASE_URL from "../../api"
+
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const BASE_URL = import.meta.env.VITE_BASE_URL
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -5,12 +5,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
 import { message } from "antd";
+import BASE_URL from "../../api"
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
 
-  const BASE_URL = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate();
   const location = useLocation();
 
