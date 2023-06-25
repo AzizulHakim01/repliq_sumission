@@ -2,20 +2,20 @@ import React, { useState, useEffect } from "react";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
-import BASE_URL from "../../api"
 import { Link } from "react-router-dom";
 import { message } from "antd";
+import BASE_URL from "../../api"
 const Products = () => {
   const [products, setProducts] = useState([]);
 
   //getall products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/v1/product/get-product`);
+      const { data } = await axios.get(`${BASE_URL}/api/v1/product/get-product`);
       setProducts(data.products);
     } catch (error) {
       console.log(error);
-      message.error("Someething Went Wrong");
+      message.error("Something Went Wrong");
     }
   };
 
