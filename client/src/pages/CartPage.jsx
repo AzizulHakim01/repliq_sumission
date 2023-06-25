@@ -14,6 +14,7 @@ const CartPage = () => {
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const BASE_URL = import.meta.env.VITE_BASE_URL
 
   //total price
   const totalPrice = () => {
@@ -71,7 +72,7 @@ const CartPage = () => {
                 <div className="row card flex-row" key={p._id}>
                   <div className="col-md-4">
                     <img
-                      src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                      src={`${BASE_URL}/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       width="100%"

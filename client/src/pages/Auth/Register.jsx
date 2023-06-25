@@ -9,12 +9,12 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-    console.log()
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:8080/api/v1/auth/register`, {
+      const res = await axios.post(`${BASE_URL}/api/v1/auth/register`, {
         name,
         email,
         password,

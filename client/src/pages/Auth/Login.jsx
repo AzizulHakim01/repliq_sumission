@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:8080/api/v1/auth/login`, {
+      const res = await axios.post(`${BASE_URL}/api/v1/auth/login`, {
         email,
         password,
       });
